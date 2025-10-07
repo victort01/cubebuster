@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Funcionario {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  senha     String   // Em produção, armazene o hash da senha
+  cargo     String
+  telefone  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  alugueis  Aluguel[]
+
+  @@map("funcionarios")
+}
+
+model Cliente {
+  id             Int        @id @default(autoincrement())
+  nome           String
+  email          String     @unique
+  cpf            String     @unique
+  telefone       String?
+  dataNascimento DateTime   @db.Date
+  endereco       Endereco?  @relation(fields: [enderecoId], references: [id])
+  enderecoId     Int?
+  alugueis       Aluguel[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  @@map("clientes")
+}
+
+
+model Endereco {
+  id        Int       @id @default(autoincrement())
+  rua       String
+  numero    String
+  bairro    String
+  cidade    String
+  estado    String
+  cep       String
+  clientes  Cliente[] // um endereço pode ter vários clientes
+
+  @@map("enderecos")
+}
+
+model Genero {
+  id        Int      @id @default(autoincrement())
+  nome      String   @unique
+  filmes    Filme[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("generos")
+}
+
+model Filme {
+  id             Int        @id @default(autoincrement())
+  titulo         String
+  anoLancamento  Int
+  classificacao  String?
+  quantidade     Int        @default(1)
+  generoId       Int
+  genero         Genero     @relation(fields: [generoId], references: [id])
+  alugueis       Aluguel[]
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  @@map("filmes")
+}
+
+model Aluguel {
+  id            Int      @id @default(autoincrement())
+  dataAluguel   DateTime @default(now())
+  dataDevolucao DateTime?
+  valor         Float
+  status        String   @default("Em andamento")
+  clienteId     Int
+  filmeId       Int
+  funcionarioId Int
+
+  cliente     Cliente     @relation(fields: [clienteId], references: [id])
+  filme       Filme       @relation(fields: [filmeId], references: [id])
+  funcionario Funcionario @relation(fields: [funcionarioId], references: [id])
+
+  @@map("alugueis")
+}

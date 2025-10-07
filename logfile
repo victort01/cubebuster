@@ -1,0 +1,38 @@
+2025-10-07 06:27:14.409 UTC [9540] LOG:  starting PostgreSQL 15.7 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.3.0, 64-bit
+2025-10-07 06:27:14.410 UTC [9540] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-07 06:27:14.419 UTC [9540] FATAL:  could not create lock file "/run/postgresql/.s.PGSQL.5432.lock": No such file or directory
+2025-10-07 06:27:14.422 UTC [9540] LOG:  database system is shut down
+2025-10-07 06:28:53.782 UTC [10067] LOG:  starting PostgreSQL 15.7 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.3.0, 64-bit
+2025-10-07 06:28:53.785 UTC [10067] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-07 06:28:53.792 UTC [10067] FATAL:  could not create lock file "/run/postgresql/.s.PGSQL.5432.lock": No such file or directory
+2025-10-07 06:28:53.797 UTC [10067] LOG:  database system is shut down
+2025-10-07 06:30:15.220 UTC [10526] LOG:  starting PostgreSQL 15.7 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.3.0, 64-bit
+2025-10-07 06:30:15.222 UTC [10526] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2025-10-07 06:30:15.227 UTC [10526] LOG:  listening on Unix socket "/run/postgresql/.s.PGSQL.5432"
+2025-10-07 06:30:15.242 UTC [10529] LOG:  database system was shut down at 2025-10-07 06:28:35 UTC
+2025-10-07 06:30:15.256 UTC [10526] LOG:  database system is ready to accept connections
+2025-10-07 06:30:21.282 UTC [10575] LOG:  invalid length of startup packet
+2025-10-07 06:30:21.313 UTC [10576] LOG:  invalid length of startup packet
+2025-10-07 06:30:24.244 UTC [10590] FATAL:  database "youtube" does not exist
+2025-10-07 06:30:27.039 UTC [10600] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:30:40.954 UTC [10651] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:31:28.550 UTC [10808] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:32:26.846 UTC [10999] FATAL:  database "user" does not exist
+2025-10-07 06:32:53.157 UTC [11116] FATAL:  role "postgres" does not exist
+2025-10-07 06:34:29.962 UTC [11442] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:34:51.103 UTC [11528] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:35:15.321 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 06:35:18.578 UTC [10527] LOG:  checkpoint complete: wrote 35 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.226 s, sync=0.009 s, total=3.257 s; sync files=11, longest=0.005 s, average=0.001 s; distance=187 kB, estimate=187 kB
+2025-10-07 06:36:11.976 UTC [11851] FATAL:  role "postgres" does not exist
+2025-10-07 06:36:59.665 UTC [12110] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:36:59.834 UTC [12117] FATAL:  database "cubebuster" does not exist
+2025-10-07 06:37:00.377 UTC [12139] ERROR:  relation "_prisma_migrations" does not exist at character 126
+2025-10-07 06:37:00.377 UTC [12139] STATEMENT:  SELECT "id", "checksum", "finished_at", "migration_name", "logs", "rolled_back_at", "started_at", "applied_steps_count" FROM "_prisma_migrations" ORDER BY "started_at" ASC
+2025-10-07 06:37:00.611 UTC [10527] LOG:  checkpoint starting: immediate force wait
+2025-10-07 06:37:00.867 UTC [10527] LOG:  checkpoint complete: wrote 954 buffers (5.8%); 1 WAL file(s) added, 0 removed, 0 recycled; write=0.081 s, sync=0.038 s, total=0.256 s; sync files=300, longest=0.005 s, average=0.001 s; distance=8928 kB, estimate=8928 kB
+2025-10-07 06:37:01.275 UTC [10527] LOG:  checkpoint starting: immediate force wait
+2025-10-07 06:37:01.315 UTC [10527] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.007 s, sync=0.009 s, total=0.040 s; sync files=7, longest=0.007 s, average=0.002 s; distance=4663 kB, estimate=8501 kB
+2025-10-07 06:37:01.811 UTC [10527] LOG:  checkpoint starting: immediate force wait
+2025-10-07 06:37:01.852 UTC [10527] LOG:  checkpoint complete: wrote 87 buffers (0.5%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.009 s, sync=0.013 s, total=0.042 s; sync files=83, longest=0.006 s, average=0.001 s; distance=4991 kB, estimate=8150 kB
+2025-10-07 06:42:01.940 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 06:42:03.586 UTC [10527] LOG:  checkpoint complete: wrote 17 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.612 s, sync=0.007 s, total=1.646 s; sync files=11, longest=0.004 s, average=0.001 s; distance=36 kB, estimate=7339 kB

@@ -1,0 +1,36 @@
+# Node / dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Prisma
+/src/generated/prisma/
+/prisma/dev.db
+*.db-journal
+
+# Ambiente local e cache
+.env
+local/
+.idx/
+.cache/
+.vscode/
+.idea/
+.DS_Store
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.swp
+*.lock
+
+# Build / compilação
+/dist/
+/build/
+
+# Ferramentas e ambientes
+/.androidsdkroot/
+/.emu/
+/.vscode-server/
+/firebase-debug.log
