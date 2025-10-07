@@ -11,13 +11,16 @@ import { EnderecoSchema, EnderecoUpdateSchema } from "../schemas/validation";
 import { z } from "zod";
 
 const router = Router();
-const idParamSchema = z.object({ id: z.string().regex(/^\d+$/).transform(Number) });
+
+const idParamSchema = z.object({
+  id: z.string().regex(/^\d+$/).transform(Number),
+});
 
 /**
  * @swagger
  * tags:
  *   name: Endereços
- *   description: Gerenciamento de Endereços
+ *   description: Gerenciamento de endereços de clientes
  */
 
 /**
@@ -36,7 +39,7 @@ const idParamSchema = z.object({ id: z.string().regex(/^\d+$/).transform(Number)
  *       201:
  *         description: Endereço criado com sucesso
  */
-router.post("/enderecos", validateBody(EnderecoSchema), createEndereco);
+router.post("/", validateBody(EnderecoSchema), createEndereco);
 
 /**
  * @swagger
@@ -46,9 +49,9 @@ router.post("/enderecos", validateBody(EnderecoSchema), createEndereco);
  *     tags: [Endereços]
  *     responses:
  *       200:
- *         description: Lista de endereços
+ *         description: Lista de endereços cadastrados
  */
-router.get("/enderecos", getEnderecos);
+router.get("/", getEnderecos);
 
 /**
  * @swagger
@@ -59,13 +62,15 @@ router.get("/enderecos", getEnderecos);
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do endereço
  *     responses:
  *       200:
  *         description: Endereço encontrado
  */
-router.get("/enderecos/:id", validateParams(idParamSchema), getEnderecoById);
+router.get("/:id", validateParams(idParamSchema), getEnderecoById);
 
 /**
  * @swagger
@@ -76,9 +81,12 @@ router.get("/enderecos/:id", validateParams(idParamSchema), getEnderecoById);
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do endereço a ser atualizado
  *     requestBody:
+ *       required: true
  *       content:
  *         application/json:
  *           schema:
@@ -88,7 +96,7 @@ router.get("/enderecos/:id", validateParams(idParamSchema), getEnderecoById);
  *         description: Endereço atualizado com sucesso
  */
 router.put(
-  "/enderecos/:id",
+  "/:id",
   validateParams(idParamSchema),
   validateBody(EnderecoUpdateSchema),
   updateEndereco
@@ -98,17 +106,19 @@ router.put(
  * @swagger
  * /enderecos/{id}:
  *   delete:
- *     summary: Remove um endereço
+ *     summary: Remove um endereço existente
  *     tags: [Endereços]
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do endereço a ser removido
  *     responses:
  *       204:
- *         description: Endereço deletado com sucesso
+ *         description: Endereço removido com sucesso
  */
-router.delete("/enderecos/:id", validateParams(idParamSchema), deleteEndereco);
+router.delete("/:id", validateParams(idParamSchema), deleteEndereco);
 
 export default router;

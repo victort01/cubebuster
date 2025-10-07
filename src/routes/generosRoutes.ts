@@ -36,7 +36,7 @@ const idParamSchema = z.object({ id: z.string().regex(/^\d+$/).transform(Number)
  *       201:
  *         description: Gênero criado com sucesso
  */
-router.post("/generos", validateBody(GeneroSchema), createGenero);
+router.post("/", validateBody(GeneroSchema), createGenero);
 
 /**
  * @swagger
@@ -48,7 +48,7 @@ router.post("/generos", validateBody(GeneroSchema), createGenero);
  *       200:
  *         description: Lista de gêneros
  */
-router.get("/generos", getGeneros);
+router.get("/", getGeneros);
 
 /**
  * @swagger
@@ -65,7 +65,7 @@ router.get("/generos", getGeneros);
  *       200:
  *         description: Gênero encontrado
  */
-router.get("/generos/:id", validateParams(idParamSchema), getGeneroById);
+router.get("/:id", validateParams(idParamSchema), getGeneroById);
 
 /**
  * @swagger
@@ -88,7 +88,7 @@ router.get("/generos/:id", validateParams(idParamSchema), getGeneroById);
  *         description: Gênero atualizado com sucesso
  */
 router.put(
-  "/generos/:id",
+  "/:id",
   validateParams(idParamSchema),
   validateBody(GeneroUpdateSchema),
   updateGenero
@@ -109,6 +109,6 @@ router.put(
  *       204:
  *         description: Gênero deletado com sucesso
  */
-router.delete("/generos/:id", validateParams(idParamSchema), deleteGenero);
+router.delete("/:id", validateParams(idParamSchema), deleteGenero);
 
 export default router;

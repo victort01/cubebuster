@@ -11,13 +11,16 @@ import { FilmeSchema, FilmeUpdateSchema } from "../schemas/validation";
 import { z } from "zod";
 
 const router = Router();
-const idParamSchema = z.object({ id: z.string().regex(/^\d+$/).transform(Number) });
+
+const idParamSchema = z.object({
+  id: z.string().regex(/^\d+$/).transform(Number),
+});
 
 /**
  * @swagger
  * tags:
  *   name: Filmes
- *   description: Gerenciamento de Filmes
+ *   description: Gerenciamento de filmes e seus gêneros
  */
 
 /**
@@ -32,23 +35,29 @@ const idParamSchema = z.object({ id: z.string().regex(/^\d+$/).transform(Number)
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Filme'
+ *           example:
+ *             titulo: "Star Wars"
+ *             anoLancamento: 1977
+ *             classificacao: "12 anos"
+ *             quantidade: 5
+ *             generoId: 1
  *     responses:
  *       201:
- *         description: Filme criado
+ *         description: Filme criado com sucesso
  */
-router.post("/filmes", validateBody(FilmeSchema), createFilme);
+router.post("/", validateBody(FilmeSchema), createFilme);
 
 /**
  * @swagger
  * /filmes:
  *   get:
- *     summary: Retorna todos os filmes
+ *     summary: Retorna todos os filmes cadastrados
  *     tags: [Filmes]
  *     responses:
  *       200:
  *         description: Lista de filmes
  */
-router.get("/filmes", getFilmes);
+router.get("/", getFilmes);
 
 /**
  * @swagger
@@ -59,36 +68,47 @@ router.get("/filmes", getFilmes);
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do filme
  *     responses:
  *       200:
  *         description: Filme encontrado
  */
-router.get("/filmes/:id", validateParams(idParamSchema), getFilmeById);
+router.get("/:id", validateParams(idParamSchema), getFilmeById);
 
 /**
  * @swagger
  * /filmes/{id}:
  *   put:
- *     summary: Atualiza um filme
+ *     summary: Atualiza os dados de um filme existente
  *     tags: [Filmes]
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do filme a ser atualizado
  *     requestBody:
+ *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Filme'
+ *           example:
+ *             titulo: "Star Wars: O Império Contra-Ataca"
+ *             anoLancamento: 1980
+ *             classificacao: "12 anos"
+ *             quantidade: 3
+ *             generoId: 1
  *     responses:
  *       200:
- *         description: Filme atualizado
+ *         description: Filme atualizado com sucesso
  */
 router.put(
-  "/filmes/:id",
+  "/:id",
   validateParams(idParamSchema),
   validateBody(FilmeUpdateSchema),
   updateFilme
@@ -98,17 +118,19 @@ router.put(
  * @swagger
  * /filmes/{id}:
  *   delete:
- *     summary: Remove um filme
+ *     summary: Remove um filme existente
  *     tags: [Filmes]
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do filme a ser removido
  *     responses:
  *       204:
- *         description: Filme deletado
+ *         description: Filme deletado com sucesso
  */
-router.delete("/filmes/:id", validateParams(idParamSchema), deleteFilme);
+router.delete("/:id", validateParams(idParamSchema), deleteFilme);
 
 export default router;

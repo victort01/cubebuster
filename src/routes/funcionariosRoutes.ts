@@ -23,14 +23,14 @@ const idParamSchema = z.object({
  * @swagger
  * tags:
  *   name: Funcionários
- *   description: Gerenciamento de Funcionários
+ *   description: Gerenciamento de funcionários da locadora
  */
 
 /**
  * @swagger
  * /funcionarios:
  *   post:
- *     summary: Cria um novo funcionário
+ *     summary: Cadastra um novo funcionário
  *     tags: [Funcionários]
  *     requestBody:
  *       required: true
@@ -38,23 +38,29 @@ const idParamSchema = z.object({
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Funcionario'
+ *           example:
+ *             nome: "João Silva"
+ *             email: "joao.silva@cubebuster.com"
+ *             senha: "senhaSegura123"
+ *             cargo: "Atendente"
+ *             telefone: "11999999999"
  *     responses:
  *       201:
  *         description: Funcionário criado com sucesso
  */
-router.post("/funcionarios", validateBody(FuncionarioSchema), createFuncionario);
+router.post("/", validateBody(FuncionarioSchema), createFuncionario);
 
 /**
  * @swagger
  * /funcionarios:
  *   get:
- *     summary: Retorna todos os funcionários
+ *     summary: Retorna todos os funcionários cadastrados
  *     tags: [Funcionários]
  *     responses:
  *       200:
  *         description: Lista de funcionários
  */
-router.get("/funcionarios", getFuncionarios);
+router.get("/", getFuncionarios);
 
 /**
  * @swagger
@@ -68,17 +74,18 @@ router.get("/funcionarios", getFuncionarios);
  *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do funcionário
  *     responses:
  *       200:
  *         description: Funcionário encontrado
  */
-router.get("/funcionarios/:id", validateParams(idParamSchema), getFuncionarioById);
+router.get("/:id", validateParams(idParamSchema), getFuncionarioById);
 
 /**
  * @swagger
  * /funcionarios/{id}:
  *   put:
- *     summary: Atualiza um funcionário existente
+ *     summary: Atualiza os dados de um funcionário existente
  *     tags: [Funcionários]
  *     parameters:
  *       - in: path
@@ -86,17 +93,25 @@ router.get("/funcionarios/:id", validateParams(idParamSchema), getFuncionarioByI
  *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do funcionário a ser atualizado
  *     requestBody:
+ *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Funcionario'
+ *           example:
+ *             nome: "João Pedro Silva"
+ *             email: "joao.pedro@cubebuster.com"
+ *             senha: "novaSenha123"
+ *             cargo: "Gerente"
+ *             telefone: "11888888888"
  *     responses:
  *       200:
  *         description: Funcionário atualizado com sucesso
  */
 router.put(
-  "/funcionarios/:id",
+  "/:id",
   validateParams(idParamSchema),
   validateBody(FuncionarioUpdateSchema),
   updateFuncionario
@@ -106,17 +121,19 @@ router.put(
  * @swagger
  * /funcionarios/{id}:
  *   delete:
- *     summary: Remove um funcionário
+ *     summary: Remove um funcionário existente
  *     tags: [Funcionários]
  *     parameters:
  *       - in: path
  *         name: id
+ *         required: true
  *         schema:
  *           type: integer
+ *         description: ID do funcionário a ser removido
  *     responses:
  *       204:
  *         description: Funcionário deletado com sucesso
  */
-router.delete("/funcionarios/:id", validateParams(idParamSchema), deleteFuncionario);
+router.delete("/:id", validateParams(idParamSchema), deleteFuncionario);
 
 export default router;

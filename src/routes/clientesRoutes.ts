@@ -36,7 +36,7 @@ const idParamSchema = z.object({ id: z.string().regex(/^\d+$/).transform(Number)
  *       201:
  *         description: Cliente criado com sucesso
  */
-router.post("/clientes", validateBody(ClienteSchema), createCliente);
+router.post("/", validateBody(ClienteSchema), createCliente);
 
 /**
  * @swagger
@@ -48,7 +48,7 @@ router.post("/clientes", validateBody(ClienteSchema), createCliente);
  *       200:
  *         description: Lista de clientes
  */
-router.get("/clientes", getClientes);
+router.get("/", getClientes);
 
 /**
  * @swagger
@@ -65,7 +65,7 @@ router.get("/clientes", getClientes);
  *       200:
  *         description: Cliente encontrado
  */
-router.get("/clientes/:id", validateParams(idParamSchema), getClienteById);
+router.get("/:id", validateParams(idParamSchema), getClienteById);
 
 /**
  * @swagger
@@ -88,7 +88,7 @@ router.get("/clientes/:id", validateParams(idParamSchema), getClienteById);
  *         description: Cliente atualizado
  */
 router.put(
-  "/clientes/:id",
+  "/:id",
   validateParams(idParamSchema),
   validateBody(ClienteUpdateSchema),
   updateCliente
@@ -109,6 +109,6 @@ router.put(
  *       204:
  *         description: Cliente deletado com sucesso
  */
-router.delete("/clientes/:id", validateParams(idParamSchema), deleteCliente);
+router.delete("/:id", validateParams(idParamSchema), deleteCliente);
 
 export default router;
