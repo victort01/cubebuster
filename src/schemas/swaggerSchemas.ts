@@ -17,7 +17,6 @@
  *           description: Nome do gênero
  *           example: Ação
  *       required:
- *         - id
  *         - nome
  *
  *     GeneroCreate:
@@ -25,6 +24,7 @@
  *       properties:
  *         nome:
  *           type: string
+ *           description: Nome do gênero
  *           example: Comédia
  *       required:
  *         - nome
@@ -34,6 +34,7 @@
  *       properties:
  *         nome:
  *           type: string
+ *           description: Novo nome do gênero
  *           example: Suspense
  *
  *     # ============================================================
@@ -44,18 +45,29 @@
  *       properties:
  *         id:
  *           type: integer
+ *           description: ID do filme
+ *           example: 1
  *         titulo:
  *           type: string
+ *           description: Título do filme
+ *           example: Matrix
  *         generoId:
  *           type: integer
+ *           description: ID do gênero vinculado
+ *           example: 1
  *         anoLancamento:
  *           type: integer
  *           description: Ano de lançamento do filme
+ *           example: 1999
  *         quantidade:
  *           type: integer
  *           description: Quantidade disponível em estoque
+ *           example: 5
+ *         classificacao:
+ *           type: string
+ *           description: Classificação indicativa
+ *           example: "14 anos"
  *       required:
- *         - id
  *         - titulo
  *         - generoId
  *         - anoLancamento
@@ -66,7 +78,7 @@
  *       properties:
  *         titulo:
  *           type: string
- *           example: Matrix
+ *           example: "Matrix"
  *         generoId:
  *           type: integer
  *           example: 1
@@ -76,6 +88,9 @@
  *         quantidade:
  *           type: integer
  *           example: 5
+ *         classificacao:
+ *           type: string
+ *           example: "16 anos"
  *       required:
  *         - titulo
  *         - generoId
@@ -97,6 +112,9 @@
  *         quantidade:
  *           type: integer
  *           example: 3
+ *         classificacao:
+ *           type: string
+ *           example: "14 anos"
  *
  *     # ============================================================
  *     # CLIENTE
@@ -106,16 +124,31 @@
  *       properties:
  *         id:
  *           type: integer
+ *           example: 1
  *         nome:
  *           type: string
+ *           example: João da Silva
  *         email:
  *           type: string
+ *           example: joao@email.com
+ *         cpf:
+ *           type: string
+ *           example: "12345678901"
  *         telefone:
  *           type: string
+ *           example: "11999999999"
+ *         dataNascimento:
+ *           type: string
+ *           format: date
+ *           example: "1990-05-15"
+ *         enderecoId:
+ *           type: integer
+ *           example: 2
  *       required:
- *         - id
  *         - nome
  *         - email
+ *         - cpf
+ *         - dataNascimento
  *
  *     ClienteCreate:
  *       type: object
@@ -126,12 +159,24 @@
  *         email:
  *           type: string
  *           example: joao@email.com
+ *         cpf:
+ *           type: string
+ *           example: "12345678901"
  *         telefone:
  *           type: string
  *           example: "11999999999"
+ *         dataNascimento:
+ *           type: string
+ *           format: date
+ *           example: "1990-05-15"
+ *         enderecoId:
+ *           type: integer
+ *           example: 2
  *       required:
  *         - nome
  *         - email
+ *         - cpf
+ *         - dataNascimento
  *
  *     ClienteUpdate:
  *       type: object
@@ -142,6 +187,9 @@
  *         telefone:
  *           type: string
  *           example: "11888888888"
+ *         enderecoId:
+ *           type: integer
+ *           example: 3
  *
  *     # ============================================================
  *     # FUNCIONÁRIO
@@ -151,14 +199,20 @@
  *       properties:
  *         id:
  *           type: integer
+ *           example: 1
  *         nome:
  *           type: string
+ *           example: Ana Souza
  *         email:
  *           type: string
+ *           example: ana@email.com
  *         cargo:
  *           type: string
+ *           example: Gerente
+ *         telefone:
+ *           type: string
+ *           example: "11988887777"
  *       required:
- *         - id
  *         - nome
  *         - email
  *         - cargo
@@ -178,6 +232,9 @@
  *         cargo:
  *           type: string
  *           example: Gerente
+ *         telefone:
+ *           type: string
+ *           example: "11988887777"
  *       required:
  *         - nome
  *         - email
@@ -193,6 +250,9 @@
  *         cargo:
  *           type: string
  *           example: Supervisora
+ *         telefone:
+ *           type: string
+ *           example: "11977776666"
  *
  *     # ============================================================
  *     # ENDEREÇO
@@ -202,47 +262,83 @@
  *       properties:
  *         id:
  *           type: integer
- *         rua:
- *           type: string
- *         cidade:
- *           type: string
- *         estado:
- *           type: string
- *       required:
- *         - id
- *         - rua
- *         - cidade
- *         - estado
- *
- *     EnderecoCreate:
- *       type: object
- *       properties:
+ *           example: 1
  *         rua:
  *           type: string
  *           example: Rua das Flores, 123
+ *         numero:
+ *           type: string
+ *           example: "123"
+ *         bairro:
+ *           type: string
+ *           example: Centro
  *         cidade:
  *           type: string
  *           example: São Paulo
  *         estado:
  *           type: string
  *           example: SP
+ *         cep:
+ *           type: string
+ *           example: "01000-000"
  *       required:
  *         - rua
+ *         - numero
+ *         - bairro
  *         - cidade
  *         - estado
+ *         - cep
+ *
+ *     EnderecoCreate:
+ *       type: object
+ *       properties:
+ *         rua:
+ *           type: string
+ *           example: Rua das Flores
+ *         numero:
+ *           type: string
+ *           example: "123"
+ *         bairro:
+ *           type: string
+ *           example: Centro
+ *         cidade:
+ *           type: string
+ *           example: São Paulo
+ *         estado:
+ *           type: string
+ *           example: SP
+ *         cep:
+ *           type: string
+ *           example: "01000-000"
+ *       required:
+ *         - rua
+ *         - numero
+ *         - bairro
+ *         - cidade
+ *         - estado
+ *         - cep
  *
  *     EnderecoUpdate:
  *       type: object
  *       properties:
  *         rua:
  *           type: string
- *           example: Avenida Brasil, 456
+ *           example: Avenida Brasil
+ *         numero:
+ *           type: string
+ *           example: "456"
+ *         bairro:
+ *           type: string
+ *           example: Jardim Paulista
  *         cidade:
  *           type: string
  *           example: Campinas
  *         estado:
  *           type: string
  *           example: SP
+ *         cep:
+ *           type: string
+ *           example: "13000-000"
  *
  *     # ============================================================
  *     # ALUGUEL
@@ -252,39 +348,16 @@
  *       properties:
  *         id:
  *           type: integer
- *         clienteId:
- *           type: integer
- *         filmeId:
- *           type: integer
- *         dataAluguel:
- *           type: string
- *           format: date-time
- *         dataDevolucao:
- *           type: string
- *           format: date-time
- *         valor:
- *           type: number
- *         status:
- *           type: string
- *           example: "Ativo"
- *       required:
- *         - id
- *         - clienteId
- *         - filmeId
- *         - dataAluguel
- *         - dataDevolucao
- *         - valor
- *         - status
- *
- *     AluguelCreate:
- *       type: object
- *       properties:
+ *           example: 1
  *         clienteId:
  *           type: integer
  *           example: 1
  *         filmeId:
  *           type: integer
  *           example: 2
+ *         funcionarioId:
+ *           type: integer
+ *           example: 1
  *         dataAluguel:
  *           type: string
  *           format: date-time
@@ -302,6 +375,42 @@
  *       required:
  *         - clienteId
  *         - filmeId
+ *         - funcionarioId
+ *         - dataAluguel
+ *         - dataDevolucao
+ *         - valor
+ *         - status
+ *
+ *     AluguelCreate:
+ *       type: object
+ *       properties:
+ *         clienteId:
+ *           type: integer
+ *           example: 1
+ *         filmeId:
+ *           type: integer
+ *           example: 2
+ *         funcionarioId:
+ *           type: integer
+ *           example: 1
+ *         dataAluguel:
+ *           type: string
+ *           format: date-time
+ *           example: "2025-10-07T12:00:00Z"
+ *         dataDevolucao:
+ *           type: string
+ *           format: date-time
+ *           example: "2025-10-10T12:00:00Z"
+ *         valor:
+ *           type: number
+ *           example: 19.9
+ *         status:
+ *           type: string
+ *           example: "Ativo"
+ *       required:
+ *         - clienteId
+ *         - filmeId
+ *         - funcionarioId
  *         - dataAluguel
  *         - dataDevolucao
  *         - valor

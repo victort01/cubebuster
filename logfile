@@ -42,3 +42,37 @@
 2025-10-07 07:57:03.218 UTC [10527] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.406 s, sync=0.009 s, total=0.438 s; sync files=5, longest=0.006 s, average=0.002 s; distance=1 kB, estimate=5945 kB
 2025-10-07 08:02:02.301 UTC [10527] LOG:  checkpoint starting: time
 2025-10-07 08:02:03.058 UTC [10527] LOG:  checkpoint complete: wrote 8 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.707 s, sync=0.009 s, total=0.758 s; sync files=7, longest=0.006 s, average=0.002 s; distance=1 kB, estimate=5350 kB
+2025-10-07 08:27:02.510 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 08:27:03.258 UTC [10527] LOG:  checkpoint complete: wrote 8 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.707 s, sync=0.010 s, total=0.748 s; sync files=6, longest=0.007 s, average=0.002 s; distance=0 kB, estimate=4815 kB
+2025-10-07 08:37:29.753 UTC [45223] ERROR:  insert or update on table "alugueis" violates foreign key constraint "alugueis_clienteId_fkey"
+2025-10-07 08:37:29.753 UTC [45223] DETAIL:  Key (clienteId)=(1) is not present in table "clientes".
+2025-10-07 08:37:29.753 UTC [45223] STATEMENT:  INSERT INTO "public"."alugueis" ("dataAluguel","dataDevolucao","valor","status","clienteId","filmeId","funcionarioId") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."alugueis"."id", "public"."alugueis"."dataAluguel", "public"."alugueis"."dataDevolucao", "public"."alugueis"."valor", "public"."alugueis"."status", "public"."alugueis"."clienteId", "public"."alugueis"."filmeId", "public"."alugueis"."funcionarioId"
+2025-10-07 08:41:43.977 UTC [46275] ERROR:  insert or update on table "alugueis" violates foreign key constraint "alugueis_clienteId_fkey"
+2025-10-07 08:41:43.977 UTC [46275] DETAIL:  Key (clienteId)=(1) is not present in table "clientes".
+2025-10-07 08:41:43.977 UTC [46275] STATEMENT:  INSERT INTO "public"."alugueis" ("dataAluguel","dataDevolucao","valor","status","clienteId","filmeId","funcionarioId") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."alugueis"."id", "public"."alugueis"."dataAluguel", "public"."alugueis"."dataDevolucao", "public"."alugueis"."valor", "public"."alugueis"."status", "public"."alugueis"."clienteId", "public"."alugueis"."filmeId", "public"."alugueis"."funcionarioId"
+2025-10-07 08:42:02.503 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 08:42:03.145 UTC [10527] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.609 s, sync=0.010 s, total=0.642 s; sync files=6, longest=0.007 s, average=0.002 s; distance=1 kB, estimate=4334 kB
+2025-10-07 08:43:58.196 UTC [46275] ERROR:  insert or update on table "alugueis" violates foreign key constraint "alugueis_filmeId_fkey"
+2025-10-07 08:43:58.196 UTC [46275] DETAIL:  Key (filmeId)=(2) is not present in table "filmes".
+2025-10-07 08:43:58.196 UTC [46275] STATEMENT:  INSERT INTO "public"."alugueis" ("dataAluguel","dataDevolucao","valor","status","clienteId","filmeId","funcionarioId") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."alugueis"."id", "public"."alugueis"."dataAluguel", "public"."alugueis"."dataDevolucao", "public"."alugueis"."valor", "public"."alugueis"."status", "public"."alugueis"."clienteId", "public"."alugueis"."filmeId", "public"."alugueis"."funcionarioId"
+2025-10-07 08:46:00.753 UTC [46275] ERROR:  insert or update on table "alugueis" violates foreign key constraint "alugueis_filmeId_fkey"
+2025-10-07 08:46:00.753 UTC [46275] DETAIL:  Key (filmeId)=(2) is not present in table "filmes".
+2025-10-07 08:46:00.753 UTC [46275] STATEMENT:  INSERT INTO "public"."alugueis" ("dataAluguel","dataDevolucao","valor","status","clienteId","filmeId","funcionarioId") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."alugueis"."id", "public"."alugueis"."dataAluguel", "public"."alugueis"."dataDevolucao", "public"."alugueis"."valor", "public"."alugueis"."status", "public"."alugueis"."clienteId", "public"."alugueis"."filmeId", "public"."alugueis"."funcionarioId"
+2025-10-07 08:47:02.240 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 08:47:04.207 UTC [10527] LOG:  checkpoint complete: wrote 20 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.916 s, sync=0.010 s, total=1.968 s; sync files=16, longest=0.004 s, average=0.001 s; distance=3 kB, estimate=3901 kB
+2025-10-07 08:57:02.403 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 08:57:03.855 UTC [10527] LOG:  checkpoint complete: wrote 15 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.412 s, sync=0.008 s, total=1.452 s; sync files=15, longest=0.004 s, average=0.001 s; distance=2 kB, estimate=3511 kB
+2025-10-07 09:02:02.955 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 09:02:03.895 UTC [10527] LOG:  checkpoint complete: wrote 10 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.910 s, sync=0.009 s, total=0.941 s; sync files=10, longest=0.006 s, average=0.001 s; distance=3 kB, estimate=3160 kB
+2025-10-07 09:12:03.096 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 09:12:03.657 UTC [10527] LOG:  checkpoint complete: wrote 6 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.507 s, sync=0.017 s, total=0.562 s; sync files=6, longest=0.015 s, average=0.003 s; distance=1 kB, estimate=2844 kB
+2025-10-07 09:17:03.754 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 09:17:05.398 UTC [10527] LOG:  checkpoint complete: wrote 17 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.612 s, sync=0.010 s, total=1.644 s; sync files=17, longest=0.006 s, average=0.001 s; distance=5 kB, estimate=2560 kB
+2025-10-07 09:18:36.441 UTC [52694] ERROR:  update or delete on table "funcionarios" violates foreign key constraint "alugueis_funcionarioId_fkey" on table "alugueis"
+2025-10-07 09:18:36.441 UTC [52694] DETAIL:  Key (id)=(3) is still referenced from table "alugueis".
+2025-10-07 09:18:36.441 UTC [52694] STATEMENT:  DELETE FROM "public"."funcionarios" WHERE ("public"."funcionarios"."id" = $1 AND 1=1) RETURNING "public"."funcionarios"."id", "public"."funcionarios"."nome", "public"."funcionarios"."email", "public"."funcionarios"."senha", "public"."funcionarios"."cargo", "public"."funcionarios"."telefone", "public"."funcionarios"."createdAt", "public"."funcionarios"."updatedAt"
+2025-10-07 09:19:33.745 UTC [52694] ERROR:  update or delete on table "filmes" violates foreign key constraint "alugueis_filmeId_fkey" on table "alugueis"
+2025-10-07 09:19:33.745 UTC [52694] DETAIL:  Key (id)=(3) is still referenced from table "alugueis".
+2025-10-07 09:19:33.745 UTC [52694] STATEMENT:  DELETE FROM "public"."filmes" WHERE ("public"."filmes"."id" = $1 AND 1=1) RETURNING "public"."filmes"."id", "public"."filmes"."titulo", "public"."filmes"."anoLancamento", "public"."filmes"."classificacao", "public"."filmes"."quantidade", "public"."filmes"."generoId", "public"."filmes"."createdAt", "public"."filmes"."updatedAt"
+2025-10-07 09:22:03.493 UTC [10527] LOG:  checkpoint starting: time
+2025-10-07 09:22:04.129 UTC [10527] LOG:  checkpoint complete: wrote 7 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.606 s, sync=0.010 s, total=0.636 s; sync files=7, longest=0.007 s, average=0.002 s; distance=3 kB, estimate=2304 kB
